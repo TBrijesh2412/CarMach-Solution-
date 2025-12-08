@@ -135,7 +135,7 @@ export default function Home() {
   return (
 
     <div className="body">
-      <a href="top"></a>
+      <a href="top">-</a>
       <div id="oo">
         <a href="#top">
           <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="red" class="bi bi-arrow-up-square-fill" viewBox="0 0 16 16">
@@ -180,7 +180,7 @@ export default function Home() {
                 <a className="nav-link" href="#blog">BLOG</a>
               </li>
               <li className="nav-item dropdown">
-                <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href='/'>
                   MORE
                 </a>
                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -321,7 +321,6 @@ export default function Home() {
           {/* Header Section */}
           <div className="row mb-5">
             <div className="col-md-8 mx-auto text-center">
-              <h6 className="" />
               <div className="background-text">AUTOPARTS</div>
               <h1>
                 WELCOME TO <span className="headtext">AUTOPARTS</span>

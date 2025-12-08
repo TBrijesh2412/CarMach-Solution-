@@ -26,9 +26,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure--)4!9^)ztad+j8qfr0c&0m@!c3*a83=g1ib@6p+_uzn*0#irom'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -176,3 +176,7 @@ class CustomSMTP(smtplib.SMTP):
 
 smtplib.SMTP = CustomSMTP
 
+
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+    
