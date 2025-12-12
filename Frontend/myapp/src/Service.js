@@ -123,7 +123,7 @@ export default function Service() {
                                                     <div className="col-lg-6 col-sm-6 g-4" key={subService.id}>
                                                         <div className="servicestyle">
                                                             <div className="serviceimg">
-                                                                <img src={`https://carmach-solution-fq3i.onrender.com/media/images/${subService.image}`}  alt={`${subService.name} icon`} />
+                                                                <img src={subService.image} alt={`${subService.name} icon`} />
                                                                 <div className="new-card-effect">
                                                                     <a href="/Book" className="me-2">
                                                                         <h5 className="mt-4 mb-2 text-danger">{subService.name}</h5>
