@@ -189,3 +189,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent  # Points to Django project ro
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR.parent / 'frontend' / 'myapp' / 'build' / 'static']
+
+
+REACT_BUILD_DIR = os.path.join(BASE_DIR, "frontend/myapp/build")
+
+TEMPLATES[0]["DIRS"] = [
+    REACT_BUILD_DIR
+]
