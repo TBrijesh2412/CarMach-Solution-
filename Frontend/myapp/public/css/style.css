@@ -123,7 +123,7 @@ img {
 
     &:after {
         background-color: #ff0000;
-        content: "";
+        content: "  ";
         height: 155px;
         left: -75px;
         opacity: 0.5;

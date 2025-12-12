@@ -8,7 +8,7 @@ export default function Service() {
 
     const [services, setServices] = useState([]);
     const [selectedService, setSelectedService] = useState("Body shop");
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
     // Fetch all services on component mount
