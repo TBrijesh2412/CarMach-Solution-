@@ -62,7 +62,7 @@ ROOT_URLCONF = 'carMech.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR.parent / 'frontend' / 'myapp' / 'build' / 'static'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -180,7 +180,12 @@ smtplib.SMTP = CustomSMTP
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-    
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'Frontend/myapp/build/static'),
-]
+
+import os
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent  # Points to Django project root (where manage.py is)
+
+
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [BASE_DIR.parent / 'frontend' / 'myapp' / 'build' / 'static']
