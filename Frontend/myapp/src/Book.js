@@ -187,7 +187,7 @@ export default function Book() {
                 price: totalCost
             };
 
-            axios.post('http://localhost:8000/api/appointments/', appointmentData)
+            axios.post('https://carmach-solution.onrender.com/api/appointments/', appointmentData)
                 .then(async (response) => {
                     alert("Appointment submitted successfully!");
                     setContactDetails({

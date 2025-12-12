@@ -129,7 +129,7 @@ export default function Contact() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch('http://localhost:8000/api/contact/', {
+            const response = await fetch('https://carmach-solution.onrender.com/api/contact/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

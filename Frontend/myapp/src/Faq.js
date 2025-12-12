@@ -6,7 +6,7 @@ export default function Faq() {
     const [faqs, setFaqs] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:8000/api/faqs/')
+        fetch('https://carmach-solution.onrender.com/api/faqs/')
             .then(response => response.json())
             .then(data => setFaqs(data))
             .catch(error => console.error('Error fetching FAQs:', error));

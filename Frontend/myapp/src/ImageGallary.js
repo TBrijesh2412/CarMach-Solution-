@@ -11,7 +11,7 @@ const ImageGallery = () => {
     const [loadCount, setLoadCount] = useState(10);
 
     useEffect(() => {
-        axios.get('http://localhost:8000/api/images/')
+        axios.get('https://carmach-solution.onrender.com/api/images/')
             .then(response => {
                 setCategories(response.data);
                 const images = response.data.reduce((acc, category) => {
@@ -107,7 +107,7 @@ const ImageGallery = () => {
                 <br />
                 <div className="image-grid">
                     {(selectedCategory ? selectedCategory.images : allImages).map((image, index) => {
-                        const imageUrl = `http://localhost:8000${image.image}`;
+                        const imageUrl = `https://carmach-solution.onrender.com/${image.image}`;
                         return (
                             <div
                                 className="grid-item"

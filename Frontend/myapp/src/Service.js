@@ -15,7 +15,7 @@ export default function Service() {
     useEffect(() => {
         const fetchServices = async () => {
             try {
-                const response = await axios.get('http://localhost:8000/api/services/');
+                const response = await axios.get('https://carmach-solution.onrender.com/api/services/');
                 const fetchedServices = response.data;
 
                 setServices(fetchedServices);
