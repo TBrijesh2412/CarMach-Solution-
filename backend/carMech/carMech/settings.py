@@ -62,7 +62,7 @@ ROOT_URLCONF = 'carMech.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR.parent / 'frontend' / 'myapp' / 'build' / 'static'],
+        'DIRS': [BASE_DIR.parent / 'frontend' / 'myapp' / 'build'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -178,8 +178,8 @@ class CustomSMTP(smtplib.SMTP):
 smtplib.SMTP = CustomSMTP
 
 
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# STATIC_URL = '/static/'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 import os
 from pathlib import Path

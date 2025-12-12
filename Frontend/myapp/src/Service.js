@@ -99,7 +99,7 @@ export default function Service() {
                                 </div>
                                 {services.map((service) => (
                                     <a
-                                    href="#"
+                                        href="#"
                                         className={`list-group-item list-group-item-action ${service.isActive ? 'active' : ''}`}
                                         key={service.id}
                                         onClick={() => handleServiceClick(service)}
@@ -152,119 +152,12 @@ export default function Service() {
                             </div>
                         </div>
                     </div>
-                    {/* <div className="row">
-                        <div
-                            className="col-lg-4"
-                            style={{
-                                position: "sticky",
-                                top: "80px", // distance from top of viewport
-                                height: "calc(100vh - 100px)",
-                                overflowY: "auto",
-                                zIndex: 10,
-                            }}
-                        >
-                            <div className="list-group container">
-                                <div className="list-group-item list-group-item-action text-white bg-danger">
-                                    All Service
-                                </div>
-                                {services.map((service) => (
-                                    <a
-                                        href="#"
-                                        key={service.id}
-                                        onClick={() => handleServiceClick(service)}
-                                        className={`list-group-item list-group-item-action ${service.isActive ? "active" : ""
-                                            }`}
-                                        style={{
-                                            cursor: "pointer",
-                                            display: "flex",
-                                            justifyContent: "space-between",
-                                            alignItems: "center",
-                                        }}
-                                    >
-                                        {service.name}
-                                        <span className="arrow text-black">&rarr;</span>
-                                    </a>
-                                ))}
-                            </div>
-                        </div>
-
-                        <div className="col-lg-8">
-                            <div className="row">
-                                {selectedService && (
-                                    <div>
-                                        <h2>Sub-Services of {selectedService.name}</h2>
-                                        {selectedService.sub_services && selectedService.sub_services.length > 0 ? (
-                                            <div className="row">
-                                                {selectedService.sub_services.map((subService) => (
-                                                    <div className="col-lg-6 col-sm-6 g-4" key={subService.id}>
-                                                        <div
-                                                            className="servicestyle"
-                                                            style={{
-                                                                border: "1px solid #ddd",
-                                                                borderRadius: "10px",
-                                                                padding: "15px",
-                                                                backgroundColor: "#fff",
-                                                                boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
-                                                            }}
-                                                        >
-                                                            <div className="serviceimg" style={{ textAlign: "center" }}>
-                                                                <img
-                                                                    src={subService.image}
-                                                                    alt={`${subService.name} icon`}
-                                                                    style={{
-                                                                        width: "100%",
-                                                                        height: "180px",
-                                                                        objectFit: "cover",
-                                                                        borderRadius: "8px",
-                                                                    }}
-                                                                />
-                                                                <div className="new-card-effect">
-                                                                    <a href="/Book" className="me-2" style={{ textDecoration: "none" }}>
-                                                                        <h5 className="mt-4 mb-2 text-danger">{subService.name}</h5>
-                                                                    </a>
-                                                                    <p style={{ fontSize: "14px", color: "#555" }}>
-                                                                        {subService.description.length > 100
-                                                                            ? `${subService.description.substring(0, 200)}...`
-                                                                            : subService.description}
-                                                                    </p>
-                                                                    <a
-                                                                        href="/Book"
-                                                                        className="me-2 tt"
-                                                                        style={{
-                                                                            backgroundColor: "#dc3545",
-                                                                            color: "white",
-                                                                            padding: "6px 12px",
-                                                                            borderRadius: "4px",
-                                                                            textDecoration: "none",
-                                                                            display: "inline-block",
-                                                                            marginTop: "5px",
-                                                                        }}
-                                                                    >
-                                                                        Book Appointment <span className="arrow text-white">&rarr;</span>
-                                                                    </a>
-                                                                </div>
-                                                                <br />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        ) : (
-                                            <p>No sub-services available for this service.</p>
-                                        )}
-                                    </div>
-                                )}
-                            </div>
-                        </div>
-                    </div> */}
-
                 </div>
             </section>
 
 
             <Cont />
 
-            {/* // Modal */}
         </div>
     );
 }
