@@ -1,14 +1,11 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from django.http import HttpResponse
 from rest_framework import status
 from .models import FAQ, ImageCategory, Service,SubService
 from .serializers import FAQSerializer, ImageCategorySerializer, ServiceSerializer,SubServiceSerializer,AppointmentSerializer
 import pandas as pd
 import os
-
-class home():
-    def post():
-        return "Welcome to Carmach solution"
 
 
 class ServiceListView(APIView):

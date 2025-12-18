@@ -1,11 +1,10 @@
 from django.urls import include, path
 from django.conf import settings
 from django.conf.urls.static import static
-from .views import FAQAPIView, ServiceListView,SubServiceListView, ImageCategoryView,AppointmentCreateView,home
+from .views import FAQAPIView, ServiceListView,SubServiceListView, ImageCategoryView,AppointmentCreateView
 from .views import ContactCreateView
 
 urlpatterns = [
-    path("/",home(),name="home"),
     path('services/', ServiceListView.as_view(), name='service-list'),
     path('subservices/', SubServiceListView.as_view(), name='service-detail'),
     path('appointments/', AppointmentCreateView.as_view(), name='appointment-create'),
