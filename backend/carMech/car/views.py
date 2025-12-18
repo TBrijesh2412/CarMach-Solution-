@@ -6,6 +6,10 @@ from .serializers import FAQSerializer, ImageCategorySerializer, ServiceSerializ
 import pandas as pd
 import os
 
+class home():
+    def post():
+        return "Welcome to Carmach solution"
+
 
 class ServiceListView(APIView):
     def get(self, request):
@@ -97,7 +101,7 @@ class AppointmentCreateView(APIView):
 
         data_new = pd.DataFrame(data)
 
-        file_name = 'E:\\CarMach Solution\\backend\\carMech\\Service_Data.xlsx'
+        file_name = r'D:\car_machsolution\backend\carMech\Service_Data.xlsx'
 
         directory = os.path.dirname(file_name)
         if not os.path.exists(directory):

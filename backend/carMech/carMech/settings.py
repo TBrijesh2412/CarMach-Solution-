@@ -163,7 +163,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'btadhani2412@gmail.com'
-EMAIL_HOST_PASSWORD = 'nnhs qgko jidt azee'  
+EMAIL_HOST_PASSWORD = 'aryq jgco knav tasg'  
 
 context = ssl._create_unverified_context()
 
