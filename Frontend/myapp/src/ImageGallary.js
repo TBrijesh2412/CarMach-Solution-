@@ -107,7 +107,7 @@ const ImageGallery = () => {
                 <br />
                 <div className="image-grid">
                     {(selectedCategory ? selectedCategory.images : allImages).map((image, index) => {
-                        const imageUrl = `https://carmach-solution.onrender.com/${image.image}`;
+                        const imageUrl = `https://carmach-solution.onrender.com${image.image}`;
                         return (
                             <div
                                 className="grid-item"
