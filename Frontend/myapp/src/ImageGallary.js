@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Navbar from './Navbar';
 import Cont from './cont'
+import Footer from './Footer';
+import Loader from './Loader';
 
 const ImageGallery = () => {
     const [categories, setCategories] = useState([]);
@@ -9,8 +11,10 @@ const ImageGallery = () => {
     const [visibleImages, setVisibleImages] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState(null);
     const [loadCount, setLoadCount] = useState(10);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        setLoading(true)
         axios.get('https://carmach-solution.onrender.com/api/images/')
             .then(response => {
                 setCategories(response.data);
@@ -19,9 +23,11 @@ const ImageGallery = () => {
                 }, []);
                 setAllImages(images);
                 setVisibleImages(images.slice(0, loadCount));
+                setLoading(false)
             })
             .catch(error => {
                 console.error('Error fetching data:', error);
+                setLoading(false)
             });
     }, []);
 
@@ -63,6 +69,10 @@ const ImageGallery = () => {
         { gridColumn: 'span 2', gridRow: 'span 1' },
         { gridColumn: 'span 3', gridRow: 'span 1' },
     ];
+
+    if (loading) {
+        return <Loader />;   // 👈 SHOW LOADER
+    }
 
     return (
         <div className="body">
@@ -132,6 +142,7 @@ const ImageGallery = () => {
             <br />
             <br />
             <Cont />
+            <Footer></Footer>
         </div>
     );
 };

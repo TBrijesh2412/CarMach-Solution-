@@ -2,15 +2,31 @@ import React, { useEffect, useState } from 'react';
 import Accordion from 'react-bootstrap/Accordion';
 import Navbar from "./Navbar";
 import Cont from './cont';
+import Loader from './Loader';
+import Footer from './Footer';
+
 export default function Faq() {
     const [faqs, setFaqs] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        setLoading(true)
         fetch('https://carmach-solution.onrender.com/api/faqs/')
             .then(response => response.json())
-            .then(data => setFaqs(data))
-            .catch(error => console.error('Error fetching FAQs:', error));
-    }, []);
+            .then(
+                data => setFaqs(data),
+                setLoading(false)
+            )
+            .catch(error => console.error(
+                'Error fetching FAQs:', error),
+                setLoading(false));
+    }, []
+    );
+
+
+    if (loading) {
+        return <Loader />;   // 👈 SHOW LOADER
+    }
 
     return (
         <div className="body">
@@ -53,6 +69,7 @@ export default function Faq() {
                 </div>
             </section>
             <Cont />
+            <Footer></Footer>
         </div>
     );
 }

@@ -2,9 +2,22 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Navbar from "./Navbar";
 import Cont from "./cont";
-
+import Footer from "./Footer";
+import Loader from "./Loader";
 
 export default function Book() {
+
+    const [loading, setLoading] = useState(true);
+
+    const [Submit, setSubmitLoading] = useState(false);
+    useEffect(() => {
+        // simulate page loading (images / content)
+        const timer = setTimeout(() => {
+            setLoading(false);
+        }, 800); // adjust time if needed
+
+        return () => clearTimeout(timer);
+    }, []);
 
     const commonValues = {
         Toyota: [
@@ -163,62 +176,68 @@ export default function Book() {
 
     function handleSubmit(e) {
         e.preventDefault();
-
         const validationErrors = validateForm();
         if (Object.keys(validationErrors).length > 0) {
             setErrors(validationErrors);
-        } else {
-            const appointmentData = {
-                manufacturer: contactDetails.manufacturer,
-                model: contactDetails.model,
-                manufacturing_year: contactDetails.manufacturingYear,
-                fuel_type: contactDetails.fuelType,
-                plan: contactDetails.plan,
-                registration_number: contactDetails.regNo.toUpperCase(),
-                selected_date: contactDetails.selectedDate,
-                selected_time: contactDetails.selectedTime,
-                services: selectedServices,
-                name: contactDetails.name,
-                phone: contactDetails.phone,
-                email: contactDetails.email,
-                picup: contactDetails.picup,
-                drop: contactDetails.drop,
-                message: contactDetails.message,
-                price: totalCost
-            };
-
-            axios.post('https://carmach-solution.onrender.com/api/appointments/', appointmentData)
-                .then(async (response) => {
-                    alert("Appointment submitted successfully!");
-                    setContactDetails({
-                        name: "",
-                        phone: "",
-                        email: "",
-                        picup: "",
-                        drop: "",
-                        message: "",
-                        selectedDate: "",
-                        selectedTime: "",
-                        manufacturingYear: "",
-                        services: "",
-                        fuelType: "",
-                        regNo: "",
-                        plan: "",
-                        manufacturer: "",
-                        model: "",
-                        price: ""
-                    });
-                    setErrors({});
-                    setSelectedServices({});
-                })
-                .catch((error) => {
-                    console.error("There was an error submitting the appointment!", error);
-                    alert("Failed to submit appointment. Please try again.");
-                });
-
-            console.log(appointmentData);
+            return;
         }
+
+        setSubmitLoading(true)
+
+        const appointmentData = {
+            manufacturer: contactDetails.manufacturer,
+            model: contactDetails.model,
+            manufacturing_year: contactDetails.manufacturingYear,
+            fuel_type: contactDetails.fuelType,
+            plan: contactDetails.plan,
+            registration_number: contactDetails.regNo.toUpperCase(),
+            selected_date: contactDetails.selectedDate,
+            selected_time: contactDetails.selectedTime,
+            services: selectedServices,
+            name: contactDetails.name,
+            phone: contactDetails.phone,
+            email: contactDetails.email,
+            picup: contactDetails.picup,
+            drop: contactDetails.drop,
+            message: contactDetails.message,
+            price: totalCost
+        }
+
+        axios.post('https://carmach-solution.onrender.com/api/appointments/', appointmentData)
+            .then(async (response) => {
+                alert("Appointment submitted successfully!");
+                setContactDetails({
+                    name: "",
+                    phone: "",
+                    email: "",
+                    picup: "",
+                    drop: "",
+                    message: "",
+                    selectedDate: "",
+                    selectedTime: "",
+                    manufacturingYear: "",
+                    services: "",
+                    fuelType: "",
+                    regNo: "",
+                    plan: "",
+                    manufacturer: "",
+                    model: "",
+                    price: ""
+                });
+                setErrors({});
+                setSelectedServices({});
+            })
+            .catch((error) => {
+                console.error("There was an error submitting the appointment!", error);
+                alert("Failed to submit appointment. Please try again.");
+            })
+            .finally(() => {
+                setSubmitLoading(false)
+            })
+
+        console.log(appointmentData);
     }
+
 
     function changeDropdownValue(value) {
         setContactDetails({ ...contactDetails, manufacturer: value, model: "" });
@@ -250,6 +269,13 @@ export default function Book() {
         setSelectedServices({ ...selectedServices, [name]: checked });
     }
 
+    if (loading) {
+        return <Loader />;   // 👈 SHOW LOADER
+    }
+
+    if (Submit) {
+        return <Loader />;   // 👈 SHOW LOADER
+    }
 
     return (
         <div className="body" >
@@ -468,13 +494,16 @@ export default function Book() {
                                 </h2>
                             </div>
                             <div className="col-md-12 mt-3 d-grid">
-                                <button type="submit" className="btn">Book Appointment</button>
+                                <button type="submit" className="btn" disabled={setSubmitLoading}>
+                                    {setSubmitLoading ? "Submitting..." : "Book Appointment"}
+                                </button>
                             </div>
                         </div>
                     </form>
                 </div>
             </section>
             <Cont />
+            <Footer />
         </div >
     );
 }

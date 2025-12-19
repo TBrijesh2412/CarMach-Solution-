@@ -1,10 +1,28 @@
 import Navbar from "./Navbar";
-import React from 'react'
 import Cont from "./cont";
-
+import React, { useEffect, useState } from "react";
+import Loader from "./Loader";
+import Footer from "./Footer";
 
 
 export default function About() {
+
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        // simulate page loading (images / content)
+        const timer = setTimeout(() => {
+            setLoading(false);
+        }, 1000); // adjust time if needed
+
+        return () => clearTimeout(timer);
+    }, []);
+
+    if (loading) {
+        return <Loader />;   // 👈 SHOW LOADER
+    }
+
+
     return (
         <div className="body">
             {/* NAVBAR */}
@@ -74,7 +92,8 @@ export default function About() {
                     </div>
                 </div>
             </section>
-            <Cont/>
+            <Cont />
+            <Footer/>
         </div>
     );
 }

@@ -1,7 +1,24 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react'
 import Cont from "./cont";
+import Loader from './Loader';
+import Footer from './Footer';
 
 export default function Home() {
+
+  const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        // simulate page loading (images / content)
+        const timer = setTimeout(() => {
+            setLoading(false);
+        }, 1000); // adjust time if needed
+
+        return () => clearTimeout(timer);
+    }, []);
+
+    if (loading) {
+        return <Loader />;   // 👈 SHOW LOADER
+    }
 
   const servicePlans = [
     {
@@ -522,11 +539,8 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-
-      <div className="pb-5" />
-
       <Cont />
+      <Footer/>
     </div>
   );
 }

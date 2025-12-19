@@ -2,13 +2,15 @@ import Cont from "./cont";
 import Navbar from "./Navbar";
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import Footer from "./Footer";
+import Loader from "./Loader";
 
 
 export default function Service() {
 
     const [services, setServices] = useState([]);
     const [selectedService, setSelectedService] = useState("Body shop");
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     // Fetch all services on component mount
@@ -43,7 +45,7 @@ export default function Service() {
     };
 
     if (loading) {
-        return <div>loading...</div>;
+        return <Loader/>;
     }
 
     if (error) {
@@ -157,6 +159,7 @@ export default function Service() {
 
 
             <Cont />
+            <Footer></Footer>
 
         </div>
     );
