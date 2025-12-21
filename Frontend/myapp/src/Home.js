@@ -1,4 +1,4 @@
-import React,{useEffect,useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import Cont from "./cont";
 import Loader from './Loader';
 import Footer from './Footer';
@@ -7,18 +7,19 @@ export default function Home() {
 
   const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        // simulate page loading (images / content)
-        const timer = setTimeout(() => {
-            setLoading(false);
-        }, 1000); // adjust time if needed
+  useEffect(() => {
+    const onLoad = () => setLoading(false);
 
-        return () => clearTimeout(timer);
-    }, []);
-
-    if (loading) {
-        return <Loader />;   // 👈 SHOW LOADER
+    if (document.readyState === "complete") {
+      // Page already loaded
+      setLoading(false);
+    } else {
+      window.addEventListener("load", onLoad);
     }
+
+    return () => window.removeEventListener("load", onLoad);
+  }, []);
+
 
   const servicePlans = [
     {
@@ -152,6 +153,7 @@ export default function Home() {
   return (
 
     <div className="body">
+      {loading && <Loader />}
       <a href="top">-</a>
       <div id="oo">
         <a href="#top">
@@ -540,7 +542,7 @@ export default function Home() {
         </div>
       </section>
       <Cont />
-      <Footer/>
+      <Footer />
     </div>
   );
 }
