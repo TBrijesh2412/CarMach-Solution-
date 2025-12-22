@@ -1,24 +1,23 @@
-import React, { useEffect, useState } from 'react'
+// import React, { useEffect, useState } from 'react'
 import Cont from "./cont";
-import Loader from './Loader';
+// import Loader from './Loader';
 import Footer from './Footer';
 
 export default function Home() {
 
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const onLoad = () => setLoading(false);
+  // useEffect(() => {
+  //   const onLoad = () => setLoading(false);
 
-    if (document.readyState === "complete") {
-      // Page already loaded
-      setLoading(false);
-    } else {
-      window.addEventListener("load", onLoad);
-    }
+  //   if (document.readyState === "complete") {
+  //     setLoading(false);
+  //   } else {
+  //     window.addEventListener("load", onLoad);
+  //   }
 
-    return () => window.removeEventListener("load", onLoad);
-  }, []);
+  //   return () => window.removeEventListener("load", onLoad);
+  // }, []);
 
 
   const servicePlans = [
@@ -152,8 +151,10 @@ export default function Home() {
 
   return (
 
+
+
     <div className="body">
-      {loading && <Loader />}
+      {/* {loading && <Loader />} */}
       <a href="top">-</a>
       <div id="oo">
         <a href="#top">
@@ -166,7 +167,7 @@ export default function Home() {
       <nav className="navbar navbar-expand-lg py-3 sticky-top">
         <div className="container">
           <a className="navbar-brand" href="/">
-            <img className="logo" src='/img/Logo.png' alt="" />
+            <img className="logo" src='/img/Logo.png' alt="" loading="lazy" />
           </a>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span>

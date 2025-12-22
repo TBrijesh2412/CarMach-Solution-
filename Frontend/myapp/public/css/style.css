@@ -742,6 +742,10 @@ select:focus {
         border-bottom: none;
     }
 
+    .hero {
+        background-attachment: scroll;
+    }
+
 }
 
 @keyframes backtext {
